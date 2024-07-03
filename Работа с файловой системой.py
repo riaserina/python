@@ -25,4 +25,7 @@ with open('visit_log.csv', 'r') as f, open('funnel.csv', 'w') as w_f:
             add_line = ','.join(line_list)
         else:
             add_line = ','.join(line_list)
-        w_f.write(add_line+'\n')
+        if 'None' in line_list:
+            pass
+        else:
+            w_f.write(add_line+'\n')
