@@ -18,14 +18,12 @@ print(ratings.head(100))
 #№2
 
 import pandas as pd
-keywords = pd.read_csv('keywords.csv')
-keywords.head(10)
-def classify(keyword):
+data = pd.read_csv('keywords.csv')
+data.head()
 geo_data = {
-    'Центр': ['москва', 'тула', 'ярославль'],
-    'Северо-Запад': ['петербург', 'псков', 'мурманск'],
-    'Дальний Восток': ['владивосток', 'сахалин', 'хабаровск']
-}
+'Центр': ['москва', 'тула', 'ярославль'],
+'Северо-Запад': ['петербург', 'псков', 'мурманск'],
+'Дальний Восток': ['владивосток', 'сахалин', 'хабаровск'] }
 new_geo_data = {}
 for i in geo_data:
     for j in geo_data[i]:
@@ -33,9 +31,9 @@ for i in geo_data:
 def define_reg(i):
     for j in new_geo_data.keys():
         if j.lower() in i.lower():
-            return j
+            return new_geo_data[j]
             break
     return 'undefined'
-keywords['region'] = keywords['keyword'].apply(define_reg)
-print(keywords.head(10))
+data['region'] = data['keyword'].apply(define_reg)
+print(data.head(851))
 
